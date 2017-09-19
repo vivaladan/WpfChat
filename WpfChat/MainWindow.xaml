@@ -1,0 +1,16 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfChat"
+        xmlns:Views="clr-namespace:WpfChat.Views" x:Class="WpfChat.MainWindow"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="780">
+    <Grid>
+
+        <Views:ChatUserListView HorizontalAlignment="Left" Height="319" VerticalAlignment="Top" Width="180"/>
+        <Views:RoomView HorizontalAlignment="Left" Height="319" Margin="180,0,0,0" VerticalAlignment="Top" Width="180"/>
+
+    </Grid>
+</Window>
