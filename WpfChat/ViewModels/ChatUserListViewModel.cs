@@ -11,9 +11,6 @@ namespace WpfChat.ViewModels
 {
     public class ChatUserListViewModel
     {
-        private readonly RoomStore _groupStore;
-        private readonly ChatUserStore _rosterStore;
-
         public ChatUserListViewModel()
         {
             var client = XmppContext.Instance;

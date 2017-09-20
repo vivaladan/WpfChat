@@ -4,8 +4,10 @@ using Sharp.Xmpp.Im;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using WpfChat.Stores;
@@ -19,7 +21,7 @@ namespace WpfChat.Util
 
         private XmppContext()
         {
-
+            if (DesignerProperties.GetIsInDesignMode(new DependencyObject())) return;
             Connect();
         }
 
@@ -36,16 +38,21 @@ namespace WpfChat.Util
         }
 
         private XmppClient client;
+        private SynchronizationContext syncContext;
 
         private IXmppClient CreateClient()
         {
             client = new Sharp.Xmpp.Client.XmppClient(
-                "drevell.apdcomms.co.uk", "app", "app", 5222, true);
+               // "drevell.apdcomms.co.uk", "app", "app", 5222, true);
+               "xps", "app", "app", 5222, true);
             return client;
         }
 
         public void Connect()
         {
+            // mixing of concerns
+            syncContext = SynchronizationContext.Current;
+
             CreateClient();
 
             client.RosterUpdated += Client_RosterUpdated;
@@ -66,12 +73,16 @@ namespace WpfChat.Util
 
         private void Client_GroupInviteReceived(object sender, Sharp.Xmpp.Extensions.GroupInviteEventArgs e)
         {
-            Rooms.Add(new ChatRoom
+            syncContext.Send(c =>
             {
-                Name = e.ChatRoom.Node,
-                Status = RoomStatus.Invited,
-                AddedBy = e.From.Node
-            });
+                Rooms.Add(new ChatRoom
+                {
+                    Name = e.ChatRoom.Node,
+                    Status = RoomStatus.Invited,
+                    AddedBy = e.From.Node
+                });
+            }, null);
+
         }
 
         private void Im_Message(object sender, MessageEventArgs e)

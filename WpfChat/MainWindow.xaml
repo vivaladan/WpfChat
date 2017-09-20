@@ -6,11 +6,13 @@
         xmlns:local="clr-namespace:WpfChat"
         xmlns:Views="clr-namespace:WpfChat.Views" x:Class="WpfChat.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="780">
+        Title="WpfChat" Height="350" Width="780">
     <Grid>
 
-        <Views:ChatUserListView HorizontalAlignment="Left" Height="319" VerticalAlignment="Top" Width="180"/>
-        <Views:RoomView HorizontalAlignment="Left" Height="319" Margin="180,0,0,0" VerticalAlignment="Top" Width="180"/>
+        <Views:ChatUserListView HorizontalAlignment="Left" Height="294" VerticalAlignment="Top" Width="180" Margin="0,25,0,0"/>
+        <Views:RoomView HorizontalAlignment="Left" Height="294" Margin="180,25,0,0" VerticalAlignment="Top" Width="180"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,4,0,0" TextWrapping="Wrap" Text="Contacts" VerticalAlignment="Top" Width="54"/>
+        <TextBlock HorizontalAlignment="Left" Margin="180,4,0,0" TextWrapping="Wrap" Text="Chats" VerticalAlignment="Top" Width="54"/>
 
     </Grid>
 </Window>

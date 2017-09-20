@@ -67,10 +67,7 @@
     <Compile Include="Converters\UserStatusColourConverter.cs" />
     <Compile Include="Stores\ChatRoom.cs" />
     <Compile Include="Stores\ChatUserStatus.cs" />
-    <Compile Include="Stores\Room.cs" />
-    <Compile Include="Stores\RoomStore.cs" />
     <Compile Include="Stores\ChatUser.cs" />
-    <Compile Include="Stores\ChatUserStore.cs" />
     <Compile Include="Util\XmppContext.cs" />
     <Compile Include="ViewModels\RoomViewModel.cs" />
     <Compile Include="ViewModels\ChatUserListViewModel.cs" />
